@@ -152,7 +152,7 @@ footer .fl{font-family:var(--disp);color:var(--bone);font-size:22px}footer a{col
 
 <section class="bhero">
 <div class="bphoto"></div>
-<video class="bvid" autoplay muted loop playsinline preload="auto" poster="faucet-poster.jpg"><source src="faucet.webm" type="video/webm"><source src="faucet.mp4" type="video/mp4"></video>
+<video class="bvid" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="faucet-poster.jpg"><source src="faucet.mp4" type="video/mp4"><source src="faucet.webm" type="video/webm"></video>
 <div class="bveil"></div>
 <div class="bglow"></div>
 <canvas id="fx"></canvas>
@@ -263,6 +263,11 @@ footer .fl{font-family:var(--disp);color:var(--bone);font-size:22px}footer a{col
 /* premium loader fade */
 window.addEventListener('load',function(){setTimeout(function(){document.getElementById('load').classList.add('done');},420);});
 setTimeout(function(){var l=document.getElementById('load');if(l)l.classList.add('done');},2600);
+
+/* ensure hero video autoplays (muted nudge + retry on first interaction) */
+(function(){var bv=document.querySelector('.bvid');if(!bv)return;bv.muted=true;function tryPlay(){try{var p=bv.play();if(p&&p.catch)p.catch(function(){});}catch(e){}}
+tryPlay();window.addEventListener('load',tryPlay);bv.addEventListener('canplay',tryPlay);
+['pointerdown','touchstart','scroll','mousemove','keydown'].forEach(function(ev){window.addEventListener(ev,tryPlay,{once:true,passive:true});});})();
 
 /* nav solidify on scroll */
 var nav=document.getElementById('nav');
