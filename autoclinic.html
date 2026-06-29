@@ -57,6 +57,33 @@ section{padding:84px 0;position:relative}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(47,123,255,.45)}50%{box-shadow:0 0 0 10px rgba(47,123,255,0)}}
 .hcard h3{font-family:var(--disp);font-size:24px;text-transform:uppercase}.hcard ul{list-style:none;margin:14px 0 18px;display:flex;flex-direction:column;gap:9px}
 .hcard li{display:flex;gap:10px;font-size:14px;color:#e3e9f1}.hcard li::before{content:"✓";color:var(--blu2);font-weight:800}
+.dash{background:rgba(255,255,255,.05);border:1px solid rgba(82,210,255,.26);border-radius:18px;padding:22px;backdrop-filter:blur(14px);box-shadow:0 26px 60px rgba(0,0,0,.45)}
+.dash .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.dash .ttl{font-family:var(--disp);font-size:19px;text-transform:uppercase;letter-spacing:1px}
+.dash .on{display:flex;align-items:center;gap:6px;font-size:11px;color:#7fe0a0;letter-spacing:1px;text-transform:uppercase}
+.dash .on i{width:8px;height:8px;border-radius:50%;background:#36d27a;box-shadow:0 0 8px #36d27a;animation:blink 1.4s infinite}
+@keyframes blink{50%{opacity:.3}}
+.gwrap{display:flex;gap:16px;align-items:center}
+.gauge{position:relative;width:118px;height:118px;flex:none}
+.gauge svg{transform:rotate(135deg)}
+.gauge .trk{fill:none;stroke:rgba(255,255,255,.1);stroke-width:9;stroke-dasharray:212 283;stroke-linecap:round}
+.gauge .vl{fill:none;stroke:url(#gg);stroke-width:9;stroke-linecap:round;stroke-dasharray:0 283;animation:rev 3.4s ease-in-out infinite alternate}
+@keyframes rev{0%{stroke-dasharray:70 283}100%{stroke-dasharray:150 283}}
+.gauge .gv{position:absolute;inset:0;display:grid;place-items:center;text-align:center}
+.gauge .gv b{font-family:var(--disp);font-size:30px;color:#fff}.gauge .gv span{font-size:10px;color:#aab2bf;letter-spacing:1px}
+.dbars{flex:1;display:flex;flex-direction:column;gap:12px}
+.dbar .l{display:flex;justify-content:space-between;font-size:11px;color:#aab2bf;margin-bottom:5px}
+.dbar .t{height:7px;border-radius:6px;background:rgba(255,255,255,.1);overflow:hidden}
+.dbar .t i{display:block;height:100%;border-radius:6px;background:linear-gradient(90deg,var(--blu),var(--blu2))}
+.dbar.temp .t i{width:68%;animation:tp 4s ease-in-out infinite alternate}@keyframes tp{to{width:75%}}
+.dbar.batt .t i{width:88%;background:linear-gradient(90deg,#36d27a,#7fe0a0)}
+.scan{margin-top:16px;position:relative;border-radius:9px;background:rgba(255,255,255,.04);overflow:hidden;padding:10px 12px;font-size:12px;color:#7fe0a0}
+.scan b{color:#fff}
+.scan::before{content:"";position:absolute;top:0;bottom:0;left:-70px;width:70px;background:linear-gradient(90deg,transparent,rgba(82,210,255,.4),transparent);animation:scn 2.6s linear infinite}
+@keyframes scn{to{left:100%}}
+.spark{margin-top:12px;height:34px}.spark svg{width:100%;height:34px;display:block}
+.spark path{fill:none;stroke:var(--blu2);stroke-width:2;stroke-dasharray:430;stroke-dashoffset:430;animation:draw 3.2s linear infinite}
+@keyframes draw{to{stroke-dashoffset:0}}
 .trust{background:var(--bg2);color:#fff;position:relative;z-index:2}
 .trust .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:30px 22px}@media(max-width:680px){.trust .wrap{grid-template-columns:1fr 1fr;gap:22px}}
 .ts{text-align:center}.ts .n{font-family:var(--disp);font-size:40px;color:var(--blu2)}.ts .l{font-size:12px;color:#aab2bf;margin-top:2px}
@@ -137,11 +164,17 @@ footer .fl{font-family:var(--disp);color:#fff;font-size:26px;text-transform:uppe
 <div class="hbtns up" style="animation-delay:.28s"><a class="btn blu" href="#estimate">Get a repair estimate</a><a class="btn ghost" href="tel:+18456286668">Call now</a></div>
 <div class="htrust up" style="animation-delay:.36s"><span>ASE Certified Techs</span><span>NAPA AutoCare</span><span>24-Month Warranty</span></div>
 </div>
-<div class="hcard up" style="animation-delay:.3s">
-<div class="em"><div class="d"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l2-5a2 2 0 0 1 2-1h6a2 2 0 0 1 2 1l2 5"/><path d="M5 13h14v4H5z"/><circle cx="8" cy="17" r="1.4"/><circle cx="16" cy="17" r="1.4"/></svg></div><div><b style="font-family:var(--disp);font-size:20px;text-transform:uppercase">Check-engine light?</b><br><span style="font-size:13px;color:#aab2bf">We'll diagnose it right.</span></div></div>
-<h3>Straight talk, fair price.</h3>
-<ul><li>We explain what your car needs — and why</li><li>No upsells, no surprises</li><li>24-month nationwide NAPA warranty</li></ul>
-<a class="btn blu" href="tel:+18456286668" style="width:100%;justify-content:center">Call 845-628-6668</a>
+<div class="dash up" style="animation-delay:.3s">
+<div class="top"><div class="ttl">Live diagnostics</div><div class="on"><i></i>Online</div></div>
+<div class="gwrap">
+<div class="gauge"><svg viewBox="0 0 100 100"><defs><linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f7bff"/><stop offset="1" stop-color="#52d2ff"/></linearGradient></defs><circle class="trk" cx="50" cy="50" r="45"/><circle class="vl" cx="50" cy="50" r="45"/></svg><div class="gv"><b id="rpm">2.4k</b><span>RPM</span></div></div>
+<div class="dbars">
+<div class="dbar temp"><div class="l"><span>Engine temp</span><span>197°F</span></div><div class="t"><i></i></div></div>
+<div class="dbar batt"><div class="l"><span>Battery</span><span>12.6 V</span></div><div class="t"><i></i></div></div>
+</div></div>
+<div class="scan">⟳ Scanning ECU…&nbsp; <b>✓ 0 fault codes — all systems nominal</b></div>
+<div class="spark"><svg viewBox="0 0 200 34" preserveAspectRatio="none"><path d="M0 24 L18 18 L36 27 L54 9 L72 21 L90 7 L108 23 L126 13 L144 25 L162 11 L180 20 L200 16"/></svg></div>
+<a class="btn blu" href="tel:+18456286668" style="width:100%;justify-content:center;margin-top:14px">Call 845-628-6668</a>
 </div>
 </div>
 </section>
@@ -253,6 +286,7 @@ window.addEventListener('mousemove',function(e){if(drag)set(e.clientX);});
 c.addEventListener('click',function(e){set(e.clientX);});
 hd.addEventListener('touchmove',function(e){set(e.touches[0].clientX);},{passive:true});})();
 (function(){var h=document.querySelector('.hero');if(!h)return;h.addEventListener('mousemove',function(e){var r=h.getBoundingClientRect();h.style.setProperty('--mx',(e.clientX-r.left)+'px');h.style.setProperty('--my',(e.clientY-r.top)+'px');});})();
+(function(){var el=document.getElementById('rpm');if(!el)return;setInterval(function(){el.textContent=(1.9+Math.random()*1.7).toFixed(1)+'k';},680);})();
 var EXPIRES=new Date('2026-07-07T23:59:59');if(new Date()>EXPIRES){document.getElementById('exp').style.display='grid';}
 </script>
 </body>

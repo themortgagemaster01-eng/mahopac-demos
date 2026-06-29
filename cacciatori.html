@@ -47,6 +47,10 @@ section{padding:84px 0;position:relative}
 .hero .wrap{position:relative;z-index:2;padding:88px 22px 96px;max-width:760px}
 .hero h1{font-family:var(--disp);font-weight:800;font-size:clamp(46px,7.2vw,84px);line-height:1}
 .hero p{color:#ecdfce;font-size:18.5px;max-width:520px;margin:16px 0 26px}
+.pza{position:absolute;right:-70px;top:50%;width:min(48vw,540px);height:min(48vw,540px);border-radius:50%;background:url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=900&q=78') center/cover;border:7px solid rgba(255,255,255,.07);box-shadow:0 0 90px rgba(233,169,60,.45),inset 0 0 70px rgba(0,0,0,.55);transform:translateY(-50%);animation:spin 40s linear infinite;z-index:1;pointer-events:none}
+@keyframes spin{to{transform:translateY(-50%) rotate(360deg)}}
+.pza::after{content:"";position:absolute;inset:-7px;border-radius:50%;box-shadow:inset 0 0 50px rgba(0,0,0,.7)}
+@media(max-width:900px){.pza{opacity:.22;right:-34%;width:78vw;height:78vw}}
 .hbtns{display:flex;gap:12px;flex-wrap:wrap}
 .htrust{display:flex;gap:18px;margin-top:24px;flex-wrap:wrap;color:#d8c7b1;font-size:13px;font-weight:600}
 .htrust span{display:flex;align-items:center;gap:7px}.htrust span::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold2)}
@@ -114,7 +118,7 @@ footer .fl{font-family:var(--disp);font-weight:800;color:#fff;font-size:26px}foo
 <a class="cta" href="https://slicelife.com/restaurants/ny/mahopac/10541/cacciatori-pizzeria/menu">Order online</a>
 </div></div>
 <section class="hero" style="padding:0">
-<div class="bg"></div><div class="ov"></div><div class="flash"></div><div class="emb" id="emb"></div>
+<div class="bg"></div><div class="ov"></div><div class="flash"></div><div class="pza"></div><div class="emb" id="emb"></div>
 <div class="wrap">
 <div class="up" style="animation-delay:.05s"><div class="eyebrow">Mahopac's neighborhood pizzeria</div></div>
 <h1 class="up" style="animation-delay:.12s">Real pizza.<br><span class="grad">Real family.</span></h1>
