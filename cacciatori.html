@@ -40,6 +40,7 @@ section{padding:84px 0;position:relative}
 .hero .bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1500&q=72');background-size:cover;background-position:center;transform:scale(1.06);animation:hz 20s ease-in-out infinite alternate;opacity:.5}
 @keyframes hz{from{transform:scale(1.06)}to{transform:scale(1.16)}}
 .hero .ov{position:absolute;inset:0;background:linear-gradient(100deg,rgba(22,13,9,.95) 34%,rgba(22,13,9,.55) 72%,rgba(22,13,9,.35)),linear-gradient(to top,rgba(22,13,9,.9),transparent 50%)}
+.hero .flash{position:absolute;inset:0;z-index:1;pointer-events:none;background-image:url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1500&q=72');background-size:cover;background-position:center;opacity:.96;-webkit-mask:radial-gradient(200px 200px at var(--mx,50%) var(--my,-260px),#000,rgba(0,0,0,.35) 46%,transparent 72%);mask:radial-gradient(200px 200px at var(--mx,50%) var(--my,-260px),#000,rgba(0,0,0,.35) 46%,transparent 72%)}
 .hero .emb{position:absolute;inset:0;overflow:hidden;pointer-events:none}
 .ember{position:absolute;bottom:-10px;width:4px;height:4px;border-radius:50%;background:var(--gold2);box-shadow:0 0 8px 2px rgba(233,169,60,.7);animation:rise linear infinite}
 @keyframes rise{to{transform:translateY(-105vh) translateX(20px);opacity:0}}
@@ -113,7 +114,7 @@ footer .fl{font-family:var(--disp);font-weight:800;color:#fff;font-size:26px}foo
 <a class="cta" href="https://slicelife.com/restaurants/ny/mahopac/10541/cacciatori-pizzeria/menu">Order online</a>
 </div></div>
 <section class="hero" style="padding:0">
-<div class="bg"></div><div class="ov"></div><div class="emb" id="emb"></div>
+<div class="bg"></div><div class="ov"></div><div class="flash"></div><div class="emb" id="emb"></div>
 <div class="wrap">
 <div class="up" style="animation-delay:.05s"><div class="eyebrow">Mahopac's neighborhood pizzeria</div></div>
 <h1 class="up" style="animation-delay:.12s">Real pizza.<br><span class="grad">Real family.</span></h1>
@@ -217,6 +218,7 @@ hd.addEventListener('mousedown',function(){drag=true;});window.addEventListener(
 window.addEventListener('mousemove',function(e){if(drag)set(e.clientX);});
 c.addEventListener('click',function(e){set(e.clientX);});
 hd.addEventListener('touchmove',function(e){set(e.touches[0].clientX);},{passive:true});})();
+(function(){var h=document.querySelector('.hero');if(!h)return;h.addEventListener('mousemove',function(e){var r=h.getBoundingClientRect();h.style.setProperty('--mx',(e.clientX-r.left)+'px');h.style.setProperty('--my',(e.clientY-r.top)+'px');});})();
 var EXPIRES=new Date('2026-07-07T23:59:59');if(new Date()>EXPIRES){document.getElementById('exp').style.display='grid';}
 </script>
 </body>
