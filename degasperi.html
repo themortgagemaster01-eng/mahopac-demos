@@ -46,6 +46,7 @@ section{padding:clamp(70px,10vw,124px) 0;position:relative}
 /* ===== CINEMATIC HERO ===== */
 .bhero{position:relative;min-height:96vh;background:#0c0a07;overflow:hidden;display:flex;align-items:center}
 .bphoto{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1590252822553-dff7d8dd2180?auto=format&fit=crop&w=1300&q=80') center/cover;filter:grayscale(.1) sepia(.4) saturate(1.3) contrast(1.1) brightness(.7);transform:scale(1.08);animation:bzoom 22s ease-in-out infinite alternate}
+.bvid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(.12) sepia(.36) saturate(1.22) contrast(1.05) brightness(.66);z-index:0}
 @keyframes bzoom{from{transform:scale(1.08)}to{transform:scale(1.2)}}
 .bveil{position:absolute;inset:0;background:radial-gradient(120% 90% at 30% 40%,rgba(12,10,7,.35),rgba(12,10,7,.86) 70%),linear-gradient(180deg,rgba(12,10,7,.5),rgba(12,10,7,.2) 40%,rgba(12,10,7,.92))}
 #fx{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
@@ -151,6 +152,7 @@ footer .fl{font-family:var(--disp);color:var(--bone);font-size:22px}footer a{col
 
 <section class="bhero">
 <div class="bphoto"></div>
+<video class="bvid" autoplay muted loop playsinline preload="auto" poster="faucet-poster.jpg"><source src="faucet.webm" type="video/webm"><source src="faucet.mp4" type="video/mp4"></video>
 <div class="bveil"></div>
 <div class="bglow"></div>
 <canvas id="fx"></canvas>
